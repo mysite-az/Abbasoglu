@@ -2,7 +2,9 @@ import { db } from "../src/lib/db";
 import { users } from "../src/lib/db/schema";
 import { hash } from "bcrypt";
 import { nanoid } from "nanoid";
+import { eq } from "drizzle-orm";
 import * as dotenv from "dotenv";
+
 
 dotenv.config();
 
@@ -15,16 +17,27 @@ async function main() {
     console.log("Seeding admin user...");
 
     try {
-        await db.insert(users).values({
-            id: nanoid(),
-            username,
-            password: hashedIconsPassword,
-        }).onConflictDoNothing();
+        const existing = await db.query.users.findFirst({
+            where: eq(users.username, username),
+        });
 
-        console.log("Admin user created or already exists.");
+        if (existing) {
+            await db.update(users)
+                .set({ password: hashedIconsPassword })
+                .where(eq(users.username, username));
+            console.log(`Admin user "${username}" updated with current password from .env.`);
+        } else {
+            await db.insert(users).values({
+                id: nanoid(),
+                username,
+                password: hashedIconsPassword,
+            });
+            console.log(`Admin user "${username}" created.`);
+        }
     } catch (err) {
         console.error("Error seeding:", err);
     }
+
 
     process.exit(0);
 }
