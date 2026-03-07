@@ -6,7 +6,8 @@ function Blogs() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3558';
+        const envUrl = import.meta.env.VITE_API_URL || 'http://localhost:3558';
+        const apiUrl = envUrl.endsWith('/') ? envUrl.slice(0, -1) : envUrl;
         fetch(`${apiUrl}/api/blogs`)
             .then((res) => res.json())
 

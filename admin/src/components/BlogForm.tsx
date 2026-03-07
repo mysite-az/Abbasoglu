@@ -73,114 +73,128 @@ export default function BlogForm({ initialData }: BlogFormProps) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-6 max-w-5xl bg-white p-8 rounded-lg shadow-sm border border-gray-100">
-            <div className="flex items-center justify-between mb-4">
+        <form onSubmit={handleSubmit} className="space-y-6 max-w-5xl bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-100">
                 <button
                     type="button"
                     onClick={() => router.back()}
-                    className="text-gray-500 hover:text-gray-700 flex items-center"
+                    className="text-gray-600 hover:text-indigo-600 flex items-center font-medium transition-colors"
                 >
-                    <ArrowLeft className="h-4 w-4 mr-1" />
-                    Geri
+                    <ArrowLeft className="h-5 w-5 mr-1" />
+                    Geri qayıt
                 </button>
-                <h2 className="text-xl font-bold">{initialData ? "Bloqu redaktə et" : "Yeni blog"}</h2>
+                <h2 className="text-2xl font-extrabold text-gray-900">
+                    {initialData ? "Bloqu Redaktə Et" : "Yeni Blog Yazısı"}
+                </h2>
             </div>
 
-            <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label className="block text-sm font-bold text-gray-900">Başlıq</label>
+            <div className="space-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-1">
+                        <label className="block text-sm font-bold text-gray-900 uppercase tracking-tight">Başlıq</label>
                         <input
                             type="text"
                             required
-                            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 bg-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 bg-gray-50 focus:bg-white focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition-all outline-none"
+                            placeholder="Bloqun başlığını daxil edin..."
                             value={title}
                             onChange={handleTitleChange}
                         />
                     </div>
 
-                    <div>
-                        <label className="block text-sm font-bold text-gray-900">Slug</label>
+                    <div className="space-y-1">
+                        <label className="block text-sm font-bold text-gray-900 uppercase tracking-tight">Slug (Link)</label>
                         <input
                             type="text"
                             required
-                            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 bg-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 bg-gray-50 focus:bg-white focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition-all outline-none"
+                            placeholder="blog-kecid-linki"
                             value={slug}
                             onChange={(e) => setSlug(e.target.value)}
                         />
                     </div>
                 </div>
 
-                <div>
-                    <label className="block text-sm font-bold text-gray-900">Şəkil URL</label>
+                <div className="space-y-1">
+                    <label className="block text-sm font-bold text-gray-900 uppercase tracking-tight">Şəkil URL</label>
                     <input
                         type="text"
-                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 bg-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 bg-gray-50 focus:bg-white focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition-all outline-none"
                         value={image}
                         onChange={(e) => setImage(e.target.value)}
                         placeholder="https://example.com/image.jpg"
                     />
                 </div>
 
-                <div>
-                    <div className="flex justify-between items-center mb-2">
-                        <label className="block text-sm font-bold text-gray-900">Məzmun (Markdown dəstəyi ilə)</label>
+                <div className="space-y-2">
+                    <div className="flex justify-between items-center">
+                        <label className="block text-sm font-bold text-gray-900 uppercase tracking-tight">
+                            Məzmun <span className="text-gray-500 font-normal normal-case ml-1">(Markdown dəstəklənir)</span>
+                        </label>
                         <button
                             type="button"
                             onClick={() => setPreview(!preview)}
-                            className="text-xs text-indigo-600 hover:text-indigo-800 font-bold uppercase tracking-wider"
+                            className={`text-xs font-bold px-3 py-1.5 rounded-full transition-all ${preview
+                                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-200"
+                                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                                }`}
                         >
-                            {preview ? "Redaktə et" : "Ön baxış"}
+                            {preview ? "📝 Redaktə et" : "👁️ Ön baxış"}
                         </button>
                     </div>
 
                     {preview ? (
-                        <div className="prose prose-indigo max-w-none border border-gray-200 p-4 rounded-md min-h-[300px] bg-gray-50 text-gray-900">
-                            <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+                        <div className="prose prose-indigo max-w-none border-2 border-dashed border-indigo-100 p-6 rounded-xl min-h-[400px] bg-white text-gray-900 shadow-inner">
+                            {content ? (
+                                <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+                            ) : (
+                                <p className="text-gray-400 italic">Hələ ki məzmun yoxdur...</p>
+                            )}
                         </div>
                     ) : (
                         <textarea
                             rows={15}
                             required
-                            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 bg-white focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm font-mono"
+                            className="block w-full rounded-xl border border-gray-300 px-4 py-4 text-gray-900 bg-gray-50 focus:bg-white focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 transition-all outline-none font-mono text-sm resize-y"
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
-                            placeholder="Markdown formatında mətn bura daxil edin... \n\n# Başlıq \n## Alt başlıq \n**Qalın**, *maili* \n- Siyahı \n[Link](url)"
+                            placeholder="# Başlıq\n\nBura bloq mətnini daxil edin...\n\n- Siyahı elementi\n- Digər element"
                         />
                     )}
                 </div>
 
-                <div className="flex items-center">
+                <div className="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-100">
                     <input
                         type="checkbox"
                         id="published"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-5 w-5 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
                         checked={published}
                         onChange={(e) => setPublished(e.target.checked)}
                     />
-                    <label htmlFor="published" className="ml-2 block text-sm text-gray-900">
-                        Dərc edilsin
+                    <label htmlFor="published" className="ml-3 block font-bold text-gray-800 cursor-pointer select-none">
+                        Bloqu dərhal daxil et (Dərc edilsin)
                     </label>
                 </div>
             </div>
 
-            <div className="flex justify-end space-x-3 pt-4 border-t border-gray-100">
+            <div className="flex justify-end space-x-4 pt-6 mt-8 border-t border-gray-100">
                 <button
                     type="button"
                     onClick={() => router.push("/dashboard/blogs")}
-                    className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 border border-gray-300 rounded-md"
+                    className="px-6 py-2.5 text-sm font-bold text-gray-700 hover:bg-gray-100 border border-gray-300 rounded-lg transition-colors"
                 >
                     Ləğv et
                 </button>
                 <button
                     type="submit"
                     disabled={loading}
-                    className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md flex items-center"
+                    className="px-8 py-2.5 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-md shadow-indigo-100 flex items-center transition-all active:transform active:scale-95 disabled:opacity-70"
                 >
                     <Save className="h-4 w-4 mr-2" />
                     {loading ? "Yadda saxlanılır..." : "Yadda saxla"}
                 </button>
             </div>
+
         </form>
     );
 }

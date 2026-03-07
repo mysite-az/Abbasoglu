@@ -19,7 +19,8 @@ function Home() {
     e.preventDefault();
     setStatus('sending');
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3558';
+      const envUrl = import.meta.env.VITE_API_URL || 'http://localhost:3558';
+      const apiUrl = envUrl.endsWith('/') ? envUrl.slice(0, -1) : envUrl;
       const response = await fetch(`${apiUrl}/api/submissions`, {
         method: 'POST',
 

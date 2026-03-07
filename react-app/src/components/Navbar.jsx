@@ -1,7 +1,9 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 function Navbar() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
   return (
     <div
       data-animation="default"
@@ -11,7 +13,17 @@ function Navbar() {
       data-easing2="ease"
       role="banner"
       className="simple-navbar w-nav"
+      style={{
+        backgroundColor: isHome ? 'transparent' : '#1a1a1a',
+        position: isHome ? 'absolute' : 'relative',
+        top: 0,
+        left: 0,
+        width: '100%',
+        zIndex: 1000,
+        padding: isHome ? '0' : '15px 0'
+      }}
     >
+
       <div className="container w-container">
         <div className="w-layout-grid grid-nav">
           <NavLink
