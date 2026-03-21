@@ -62,7 +62,7 @@ function Services() {
                   <div>
                     <h3 className="service-one-title">Fasad və Şüşə</h3>
                     <p className="service-one-description">
-                      Binaların fasad və şüşələrinin peşəkar yuyulması. Sənaye alpinistləri.
+                      Binaların fasad və şüşələrinin peşəkar yuyulması.
                     </p>
                   </div>
                 </div>

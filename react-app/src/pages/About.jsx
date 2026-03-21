@@ -190,7 +190,7 @@ function About() {
                 <img loading="eager" src="https://cdn.prod.website-files.com/6756b988bb35f025028d3f34/6757cfffc7e5ff9daae7bf49_service-icon-02.svg" alt="Service Icon" className="service-box-icon" />
               </div>
               <h4 className="service-box-title">Fasad və Şüşə</h4>
-              <p className="service-box-description">Binaların fasad və şüşələrinin sənaye alpinistləri tərəfindən mükəmməl yuyulması.</p>
+              <p className="service-box-description">Binaların fasad və şüşələrinin mükəmməl yuyulması.</p>
             </div>
             <div className="service-box-item" style={{ opacity: 1 }}>
               <div className="service-box-icon-rounded">

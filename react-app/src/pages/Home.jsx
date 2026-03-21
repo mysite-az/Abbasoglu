@@ -311,7 +311,7 @@ function Home() {
                   <img width="400" alt="Service Image" src="https://cdn.prod.website-files.com/6756b988bb35f025028d3f34/6757cfffc7e5ff9daae7bf4b_service-image-02.avif" loading="eager" className="service-hover-image" />
                 </div>
                 <div className="service-content-wrap">
-                  <p className="service-description">Binaların fasad və şüşələrinin peşəkar yuyulması. Sənaye alpinistləri.</p>
+                  <p className="service-description">Binaların fasad və şüşələrinin peşəkar yuyulması.</p>
                 </div>
               </div>
               <div className="service-divider" />
@@ -437,7 +437,7 @@ function Home() {
                   <div className="testimonial-info" style={{ marginTop: 'auto' }}>
                     <img loading="eager" src="https://cdn.prod.website-files.com/6756b988bb35f025028d3f34/6757d0dc723bb74b29c4576f_testimonial-image04.avif" alt="Testimonial Image" className="testimonial-image" />
                     <div>
-                      <h5 className="testimonial-name">Boulevard Hotel Company MMC</h5>
+                      <h5 className="testimonial-name">SGC Azerbaijan MMC</h5>
                       <div style={{ fontSize: '14px', color: '#666' }}>Tərəfdaş</div>
                     </div>
                   </div>
