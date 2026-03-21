@@ -458,6 +458,36 @@ function Home() {
                   </div>
                 </div>
               </div>
+              <div style={{ position: 'relative', flex: '0 0 auto', width: '350px', whiteSpace: 'normal' }}>
+                <div className="testimonial-item" style={{ height: 'auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  <div className="testimonial-title-wrap">
+                    <img loading="eager" src="https://cdn.prod.website-files.com/6756b988bb35f025028d3f34/6757d0dc723bb74b29c45763_star-image.svg" alt="Star" className="rating-image" />
+                    <h5 className="testimonial-content">Əməkdaşlıq etdiyimiz müddətdə məkanlarımız hər zaman təmiz və səliqəli saxlanıldı. İşçilər yüksək səviyyəli mütəxəssislərdir.</h5>
+                  </div>
+                  <div className="testimonial-info" style={{ marginTop: 'auto' }}>
+                    <img loading="eager" src="https://cdn.prod.website-files.com/6756b988bb35f025028d3f34/6757d0dc723bb74b29c45769_testimonial-image05.avif" alt="Testimonial Image" className="testimonial-image" />
+                    <div>
+                      <h5 className="testimonial-name">Mixək restoranı</h5>
+                      <div style={{ fontSize: '14px', color: '#666' }}>Müştəri</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style={{ position: 'relative', flex: '0 0 auto', width: '350px', whiteSpace: 'normal' }}>
+                <div className="testimonial-item" style={{ height: 'auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  <div className="testimonial-title-wrap">
+                    <img loading="eager" src="https://cdn.prod.website-files.com/6756b988bb35f025028d3f34/6757d0dc723bb74b29c45763_star-image.svg" alt="Star" className="rating-image" />
+                    <h5 className="testimonial-content">Uzunmüddətli əməkdaşlığımız ərzində hər zaman yüksək xidmət standartları gördük.</h5>
+                  </div>
+                  <div className="testimonial-info" style={{ marginTop: 'auto' }}>
+                    <img loading="eager" src="https://cdn.prod.website-files.com/6756b988bb35f025028d3f34/6757d0dc723bb74b29c45769_testimonial-image05.avif" alt="Testimonial Image" className="testimonial-image" />
+                    <div>
+                      <h5 className="testimonial-name">Nəlbəki Restoranı</h5>
+                      <div style={{ fontSize: '14px', color: '#666' }}>Müştəri</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
